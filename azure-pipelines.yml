@@ -30,6 +30,144 @@ stages:
       inputs:
         script: |
           echo Send PreNotification
+  - job: Send_PostNotification
+    steps:
+    - task: CmdLine@2
+      inputs:
+        script: |
+          echo Send PostNotification
+  - job: Install_Windows_Updates
+    steps:
+    - task: CmdLine@2
+      inputs:
+        script: |
+          echo Install windows updates...
+  - job: Update_Jira_Ticket
+    steps:
+    - task: CmdLine@2
+      inputs:
+        script: |
+          echo Update Jira Ticket
+- stage: Patch_Test_Group
+  jobs:
+  - job: Send_PreNotification
+    steps:
+    - task: CmdLine@2
+      inputs:
+        script: |
+          echo Send PreNotification
+  - job: Send_PostNotification
+    steps:
+    - task: CmdLine@2
+      inputs:
+        script: |
+          echo Send PostNotification
+  - job: Install_Windows_Updates
+    steps:
+    - task: CmdLine@2
+      inputs:
+        script: |
+          echo Install windows updates...
+  - job: Update_Jira_Ticket
+    steps:
+    - task: CmdLine@2
+      inputs:
+        script: |
+          echo Update Jira Ticket
+- stage: Patch_Staging_Group
+  jobs:
+  - job: Send_PreNotification
+    steps:
+    - task: CmdLine@2
+      inputs:
+        script: |
+          echo Send PreNotification
+  - job: Send_PostNotification
+    steps:
+    - task: CmdLine@2
+      inputs:
+        script: |
+          echo Send PostNotification
+  - job: Install_Windows_Updates
+    steps:
+    - task: CmdLine@2
+      inputs:
+        script: |
+          echo Install windows updates...
+  - job: Update_Jira_Ticket
+    steps:
+    - task: CmdLine@2
+      inputs:
+        script: |
+          echo Update Jira Ticket
+- stage: Check_Jira_Ticket_Approval
+  jobs:
+  - job: Check_Jira_Ticket_Approval
+    steps:
+    - task: CmdLine@2
+      inputs:
+        script: |
+          echo check jira ticket approval...
+- stage: Patch_Prod_Group
+  jobs:
+  - job: Send_PreNotification
+    steps:
+    - task: CmdLine@2
+      inputs:
+        script: |
+          echo Send PreNotification
+  - job: Send_PostNotification
+    steps:
+    - task: CmdLine@2
+      inputs:
+        script: |
+          echo Send PostNotification
+  - job: Install_Windows_Updates
+    steps:
+    - task: CmdLine@2
+      inputs:
+        script: |
+          echo Install windows updates...
+  - job: Update_Jira_Ticket
+    steps:
+    - task: CmdLine@2
+      inputs:
+        script: |
+          echo Update Jira Ticket
+- stage: Patch_Infra_Group
+  jobs:
+    - job: Send_PreNotification
+      steps:
+      - task: CmdLine@2
+        inputs:
+          script: |
+            echo Send PreNotification
+    - job: Send_PostNotification
+      steps:
+      - task: CmdLine@2
+        inputs:
+          script: |
+            echo Send PostNotification
+    - job: Install_Windows_Updates
+      steps:
+      - task: CmdLine@2
+        inputs:
+          script: |
+            echo Install windows updates...
+    - job: Update_Jira_Ticket
+      steps:
+      - task: CmdLine@2
+        inputs:
+          script: |
+            echo Update Jira Ticket
+- stage: Close_Jira_Ticket
+  jobs:
+  - job: Close_Jira_Ticket 
+    steps:
+    - task: CmdLine@2
+      inputs:
+        script: |
+          echo close jira ticket
 
 # steps:
 # - task: Maven@3
