@@ -24,12 +24,12 @@ stages:
           echo Open Jira Ticket...
 - stage: Patch_QA_Group
   jobs:
-  - job: Send_Pre-Notification
+  - job: Send_PreNotification
     steps:
     - task: CmdLine@2
       inputs:
         script: |
-          echo Send Pre-Notification
+          echo Send PreNotification
 
 # steps:
 # - task: Maven@3
