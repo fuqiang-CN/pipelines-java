@@ -18,7 +18,7 @@ stages:
   jobs:
   - job: Open Jira Ticket
     steps:
-    - task: Open Jria Ticket
+    - task: Open_Jria_Ticket@1
       inputs:
         script: |
           echo Open Jira Ticket...
@@ -26,7 +26,7 @@ stages:
   jobs:
   - job: Send Pre-Notification
     steps:
-    - task: Send Pre-Notification
+    - task: Send_Pre-Notification@1
       inputs:
         script: |
           echo Send Pre-Notification
