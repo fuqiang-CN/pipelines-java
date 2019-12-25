@@ -14,19 +14,19 @@ pool:
   vmImage: 'ubuntu-latest'
 
 stages:
-- stage: Open Jira Ticket
+- stage: Open_Jira_Ticket
   jobs:
-  - job: Open Jira Ticket
+  - job: Open_Jira_Ticket
     steps:
-    - task: Open_Jria_Ticket@1
+    - task: CmdLine@2
       inputs:
         script: |
           echo Open Jira Ticket...
-- stage: Patch QA Group
+- stage: Patch_QA_Group
   jobs:
-  - job: Send Pre-Notification
+  - job: Send_Pre-Notification
     steps:
-    - task: Send_Pre-Notification@1
+    - task: CmdLine@2
       inputs:
         script: |
           echo Send Pre-Notification
