@@ -13,28 +13,32 @@ schedules:
 pool:
   vmImage: 'ubuntu-latest'
 
-steps:
-- task: Maven@3
-  inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
+stages:
+- stage: Open Jira Ticket
+  jobs:
+  - job: Open Jira Ticket
+    steps:
+    - task: Open Jria Ticket
+      inputs:
+        script: |
+          echo Open Jira Ticket...
+- stage: Patch QA Group
+  jobs:
+  - job: Send Pre-Notification
+    steps:
+    - task: Send Pre-Notification
+      inputs:
+        script: |
+          echo Send Pre-Notification
 
-- task: CmdLine@2
-  inputs:
-    script: |
-      echo Write your commands here
-      
-      echo Hello world 1
-
-- task: CmdLine@2
-  inputs:
-    script: |
-      echo Write your commands here
-      
-      echo Hello world 2
+# steps:
+# - task: Maven@3
+#   inputs:
+#     mavenPomFile: 'pom.xml'
+#     mavenOptions: '-Xmx3072m'
+#     javaHomeOption: 'JDKVersion'
+#     jdkVersionOption: '1.8'
+#     jdkArchitectureOption: 'x64'
+#     publishJUnitResults: true
+#     testResultsFiles: '**/surefire-reports/TEST-*.xml'
+#     goals: 'package'
