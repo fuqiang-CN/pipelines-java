@@ -30,19 +30,22 @@ stages:
       inputs:
         script: |
           echo Send PreNotification
-  - job: Send_PostNotification
-    steps:
-    - task: CmdLine@2
-      inputs:
-        script: |
-          echo Send PostNotification
   - job: Install_Windows_Updates
+    dependsOn: Send_PreNotification
     steps:
     - task: CmdLine@2
       inputs:
         script: |
           echo Install windows updates...
+  - job: Send_PostNotification
+    dependsOn: Install_Windows_Updates
+    steps:
+    - task: CmdLine@2
+      inputs:
+        script: |
+          echo Send PostNotification
   - job: Update_Jira_Ticket
+    dependsOn: Send_PostNotification
     steps:
     - task: CmdLine@2
       inputs:
@@ -50,30 +53,33 @@ stages:
           echo Update Jira Ticket
 - stage: Patch_Test_Group
   jobs:
-  - job: Send_PreNotification
-    steps:
-    - task: CmdLine@2
-      inputs:
-        script: |
-          echo Send PreNotification
-  - job: Send_PostNotification
-    steps:
-    - task: CmdLine@2
-      inputs:
-        script: |
-          echo Send PostNotification
-  - job: Install_Windows_Updates
-    steps:
-    - task: CmdLine@2
-      inputs:
-        script: |
-          echo Install windows updates...
-  - job: Update_Jira_Ticket
-    steps:
-    - task: CmdLine@2
-      inputs:
-        script: |
-          echo Update Jira Ticket
+    - job: Send_PreNotification
+      steps:
+      - task: CmdLine@2
+        inputs:
+          script: |
+            echo Send PreNotification
+    - job: Install_Windows_Updates
+      dependsOn: Send_PreNotification
+      steps:
+      - task: CmdLine@2
+        inputs:
+          script: |
+            echo Install windows updates...
+    - job: Send_PostNotification
+      dependsOn: Install_Windows_Updates
+      steps:
+      - task: CmdLine@2
+        inputs:
+          script: |
+            echo Send PostNotification
+    - job: Update_Jira_Ticket
+      dependsOn: Send_PostNotification
+      steps:
+      - task: CmdLine@2
+        inputs:
+          script: |
+            echo Update Jira Ticket
 - stage: Patch_Staging_Group
   jobs:
   - job: Send_PreNotification
@@ -82,19 +88,22 @@ stages:
       inputs:
         script: |
           echo Send PreNotification
-  - job: Send_PostNotification
-    steps:
-    - task: CmdLine@2
-      inputs:
-        script: |
-          echo Send PostNotification
   - job: Install_Windows_Updates
+    dependsOn: Send_PreNotification
     steps:
     - task: CmdLine@2
       inputs:
         script: |
           echo Install windows updates...
+  - job: Send_PostNotification
+    dependsOn: Install_Windows_Updates
+    steps:
+    - task: CmdLine@2
+      inputs:
+        script: |
+          echo Send PostNotification
   - job: Update_Jira_Ticket
+    dependsOn: Send_PostNotification
     steps:
     - task: CmdLine@2
       inputs:
@@ -116,19 +125,22 @@ stages:
       inputs:
         script: |
           echo Send PreNotification
-  - job: Send_PostNotification
-    steps:
-    - task: CmdLine@2
-      inputs:
-        script: |
-          echo Send PostNotification
   - job: Install_Windows_Updates
+    dependsOn: Send_PreNotification
     steps:
     - task: CmdLine@2
       inputs:
         script: |
           echo Install windows updates...
+  - job: Send_PostNotification
+    dependsOn: Install_Windows_Updates
+    steps:
+    - task: CmdLine@2
+      inputs:
+        script: |
+          echo Send PostNotification
   - job: Update_Jira_Ticket
+    dependsOn: Send_PostNotification
     steps:
     - task: CmdLine@2
       inputs:
@@ -136,30 +148,33 @@ stages:
           echo Update Jira Ticket
 - stage: Patch_Infra_Group
   jobs:
-    - job: Send_PreNotification
-      steps:
-      - task: CmdLine@2
-        inputs:
-          script: |
-            echo Send PreNotification
-    - job: Send_PostNotification
-      steps:
-      - task: CmdLine@2
-        inputs:
-          script: |
-            echo Send PostNotification
-    - job: Install_Windows_Updates
-      steps:
-      - task: CmdLine@2
-        inputs:
-          script: |
-            echo Install windows updates...
-    - job: Update_Jira_Ticket
-      steps:
-      - task: CmdLine@2
-        inputs:
-          script: |
-            echo Update Jira Ticket
+  - job: Send_PreNotification
+    steps:
+    - task: CmdLine@2
+      inputs:
+        script: |
+          echo Send PreNotification
+  - job: Install_Windows_Updates
+    dependsOn: Send_PreNotification
+    steps:
+    - task: CmdLine@2
+      inputs:
+        script: |
+          echo Install windows updates...
+  - job: Send_PostNotification
+    dependsOn: Install_Windows_Updates
+    steps:
+    - task: CmdLine@2
+      inputs:
+        script: |
+          echo Send PostNotification
+  - job: Update_Jira_Ticket
+    dependsOn: Send_PostNotification
+    steps:
+    - task: CmdLine@2
+      inputs:
+        script: |
+          echo Update Jira Ticket
 - stage: Close_Jira_Ticket
   jobs:
   - job: Close_Jira_Ticket 
