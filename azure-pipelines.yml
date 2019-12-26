@@ -17,6 +17,7 @@ stages:
 - stage: Open_Jira_Ticket
   jobs:
   - deployment: Open_Jira_Ticket
+    environment: qa
     strategy:
       runOnce:
         deploy:
@@ -28,6 +29,7 @@ stages:
 - stage: Patch_QA_Group
   jobs:
   - deployment: Send_PreNotification
+    environment: qa
     strategy:
       runOnce:
         deploy:
@@ -37,6 +39,7 @@ stages:
               script: |
                 echo Send PreNotification
   - deployment: Install_Windows_Updates
+    environment: qa
     strategy:
       runOnce:
         deploy:
@@ -46,6 +49,7 @@ stages:
               script: |
                 echo Install windows updates...
   - deployment: Send_PostNotification
+    environment: qa
     strategy:
       runOnce:
         deploy:
@@ -55,6 +59,7 @@ stages:
               script: |
                 echo Send PostNotification
   - deployment: Update_Jira_Ticket
+    environment: qa
     strategy:
       runOnce:
         deploy:
@@ -66,6 +71,7 @@ stages:
 - stage: Patch_Test_Group
   jobs:
     - deployment: Send_PreNotification
+      environment: test
       strategy:
         runOnce:
           deploy:
@@ -75,6 +81,7 @@ stages:
                 script: |
                   echo Send PreNotification
     - deployment: Install_Windows_Updates
+      environment: test
       strategy:
         runOnce:
           deploy:
@@ -84,6 +91,7 @@ stages:
                 script: |
                   echo Install windows updates...
     - deployment: Send_PostNotification
+      environment: test
       strategy:
         runOnce:
           deploy:
@@ -93,6 +101,7 @@ stages:
                 script: |
                   echo Send PostNotification
     - deployment: Update_Jira_Ticket
+      environment: test
       strategy:
         runOnce:
           deploy:
@@ -104,6 +113,7 @@ stages:
 - stage: Patch_Staging_Group
   jobs:
   - deployment: Send_PreNotification
+    environment: staging
     strategy:
       runOnce:
         deploy:
@@ -113,6 +123,7 @@ stages:
               script: |
                 echo Send PreNotification
   - deployment: Install_Windows_Updates
+    environment: staging
     strategy:
       runOnce:
         deploy:
@@ -122,6 +133,7 @@ stages:
               script: |
                 echo Install windows updates...
   - deployment: Send_PostNotification
+    environment: staging
     strategy:
       runOnce:
         deploy:
@@ -131,6 +143,7 @@ stages:
               script: |
                 echo Send PostNotification
   - deployment: Update_Jira_Ticket
+    environment: staging
     strategy:
       runOnce:
         deploy:
@@ -142,6 +155,7 @@ stages:
 - stage: Check_Jira_Ticket_Approval
   jobs:
   - deployment: Check_Jira_Ticket_Approval
+    environment: staging
     strategy:
       runOnce:
         deploy:
@@ -153,6 +167,7 @@ stages:
 - stage: Patch_Prod_Group
   jobs:
   - deployment: Send_PreNotification
+    environment: prod
     strategy:
       runOnce:
         deploy:
@@ -162,6 +177,7 @@ stages:
               script: |
                 echo Send PreNotification
   - deployment: Install_Windows_Updates
+    environment: prod
     strategy:
       runOnce:
         deploy:
@@ -171,6 +187,7 @@ stages:
               script: |
                 echo Install windows updates...
   - deployment: Send_PostNotification
+    environment: prod
     strategy:
       runOnce:
         deploy:
@@ -180,6 +197,7 @@ stages:
               script: |
                 echo Send PostNotification
   - deployment: Update_Jira_Ticket
+    environment: prod
     strategy:
       runOnce:
         deploy:
@@ -191,6 +209,7 @@ stages:
 - stage: Patch_Infra_Group
   jobs:
   - deployment: Send_PreNotification
+    environment: infra
     strategy:
       runOnce:
         deploy:
@@ -200,6 +219,7 @@ stages:
               script: |
                 echo Send PreNotification
   - deployment: Install_Windows_Updates
+    environment: infra
     strategy:
       runOnce:
         deploy:
@@ -209,6 +229,7 @@ stages:
               script: |
                 echo Install windows updates...
   - deployment: Send_PostNotification
+    environment: infra
     strategy:
       runOnce:
         deploy:
@@ -218,6 +239,7 @@ stages:
               script: |
                 echo Send PostNotification
   - deployment: Update_Jira_Ticket
+    environment: infra
     strategy:
       runOnce:
         deploy:
@@ -229,6 +251,7 @@ stages:
 - stage: Close_Jira_Ticket
   jobs:
   - deployment: Close_Jira_Ticket 
+    environment: infra
     strategy:
       runOnce:
         deploy:
